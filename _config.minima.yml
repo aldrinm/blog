@@ -1,11 +1,19 @@
-owner: "Aldrin"
-email: test@test.test
-info: "Just a test blog"
-#description
-desc: "Testing, testing, 1, 2, 3..."
+#title in header
+title: "Aldrin's Notes"
 
+owner: "Aldrin Misquitta"
+email:  
+info: "Mostly how-tos, notes, tech thoughts and stuff"
+
+#description
+desc: 
 
 github: https://github.com/aldrinm
 linkedin: https://linkedin.com/in/aldrinmisquitta
 twitter: https://twitter.com/aldrinm
 instagram:
+
+#menu
+menu:
+  Works: 
+  About: 

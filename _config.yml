@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: Aldrin's Notes
 subtitle: ''
 description: ''
 keywords:
-author: John Doe
+author: Aldrin Misquitta
 language: en
 timezone: 'GMT'
 
@@ -45,12 +45,14 @@ relative_link: false
 future: true
 syntax_highlighter: highlight.js
 highlight:
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace: ''
   wrap: true
   hljs: false
 prismjs:
+  enable: true
   preprocess: true
   line_number: true
   tab_replace: ''
@@ -102,3 +104,7 @@ theme: minima
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+
+
+# Google Analytics ID
+google_analytics: G-XB8X4T7ZL8
