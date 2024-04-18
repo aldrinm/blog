@@ -8,8 +8,9 @@ When writing Junit tests, it is nice to have a clear and readable test name. It 
 JUnit 5 has a handy feature to customize the display name of tests. 
 
 ## @DisplayName
-Using `@DisplayName` you can provide your own test name. IDEs can then show a more readable name for the test. 
-Bonus points - emojis and special characters can be freely used.
+Using `@DisplayName` you can provide your own test name. IDEs can then show a more readable name for the test.
+
+*(Bonus - emojis and special characters can be freely used)*
 
 {% codeblock lang:java line_number:false highlight: true %}
 @Test
@@ -20,7 +21,7 @@ void test_book_initialization() {
 {% endcodeblock %}
 
 will be displayed in IntelliJ as,
-{% asset_img display_intellij.png 'IntelliJ test display' %}
+{% asset_img display_intellij.png 'IntelliJ's @DisplayName handling of the test name' %}
 
 
 ## @DisplayNameGenerator
@@ -29,13 +30,6 @@ If you don't want to do that but just want regular test cases without
 much effort, JUnit provides `@DisplayNameGenerator` to customize the name. 
 
 For instance, there is an already available `DisplayNameGenerator.ReplaceUnderscores` that replaces the underscores in your test names.
-
-{% codeblock lang:java line_number:false highlight: true %}
-@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-class BookTests {
-    // Test methods here
-}
-{% endcodeblock %}
 
 So,
 {% codeblock lang:java line_number:false highlight: true %}
@@ -60,8 +54,7 @@ class DisplayNameGeneratorUnderscoreTests {
 {% endcodeblock %}
 
 gets displayed by IntelliJ, without underscores, as,
-{% asset_img underscore_tests.png 'IntelliJ underscore test display' %}
-
+{% asset_img underscore_tests.png 'IntelliJ's handling of ReplaceUnderscores' %}
 
 
 ## Customizing @DisplayNameGenerator
@@ -70,7 +63,7 @@ test methods? There isn't an out-of-the-box generator that can reformat that,
 but it is very easy to write one yourself. Extend `DisplayNameGenerator.Simple` and override the
 methods you need. (Alternatively, you can also implement `org.junit.jupiter.api.DisplayNameGenerator`)
 
-*(code is available at https://github.com/aldrinm/display-name-generators/blob/main/src/test/java/aldrin/displaynamegenerators/CamelCaseGenerator.java)*
+*(following code is also available at https://github.com/aldrinm/display-name-generators/blob/main/src/test/java/aldrin/displaynamegenerators/CamelCaseGenerator.java)*
 
 {% codeblock lang:java line_number:false highlight: true %}
     import org.apache.commons.lang3.StringUtils;
@@ -99,6 +92,32 @@ Note that the above class depends on `StringUtils` from Apache Commons Lang, so 
     <version>3.14.0</version>
 </dependency>
 {% endcodeblock %}
+
+
+{% codeblock lang:java line_number:false highlight: true %}
+@SpringBootTest
+@DisplayNameGeneration(CamelCaseGenerator.class)
+class DisplayNameGeneratorCamelTests {
+
+    @Test
+    void testBookInitialization() {
+        //for demo
+    }
+
+    @Test
+    void testBookSetTitle() {
+        //for demo
+    }
+
+    @Test
+    void testBookSetAuthor() {
+        //for demo
+    }
+}
+{% endcodeblock %}
+
+gets displayed by IntelliJ, as,
+{% asset_img camel_case.png 'IntelliJ's handling of CamelCaseGenerator' %}
 
 
 
