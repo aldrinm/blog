@@ -1,5 +1,5 @@
 ---
-title: Cypher: Don't just generate, Iterate!
+title: "Cypher: Don't just generate, Iterate!"
 date: "2025/08/25 00:00:00"
 ---
 
