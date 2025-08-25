@@ -10,7 +10,7 @@ I've been trying the [Embabel](https://github.com/embabel/embabel-agent) framewo
 
 If you feed it the database schema, any decent LLM will generate a reasonably okay cypher statement. However, LLMs often generate cypher that fail because of improper syntax or return no results because of wrong choice of node labels or relationships or wrong properties in the clauses. 
 
-I wanted to add a verification step before executing the cypher. There is a neat library [CyVer] (https://gitlab.com/netmode/CyVer) that can perform syntax, schema and property checks on cypher. It is written in Python. So to be able to include it in my agent I wrapped it into an MCP tool. Here's the script that does that https://github.com/aldrinm/cyver-mcp
+I wanted to add a verification step before executing the cypher. There is a neat library [CyVer] (https://gitlab.com/netmode/CyVer) that can perform syntax, schema and property checks on cypher. It is written in Python. So to be able to include it in my agent I wrapped it into an MCP tool. Here's the script for the MCP server https://github.com/aldrinm/cyver-mcp
 
 Exposing the tool to the LLM and allowing tool callback worked very well and I was able to get feedback on the generated cypher statements. But I didn't like the roundabout way of invoking a local tool through an LLM. There must be a way to invoke it explicitly and I was able to find this through the `McpSyncClient`.
 
@@ -46,7 +46,7 @@ try {
 
 ​
 This worked rather well. I was also to call [Neo4j's MCP Server](https://github.com/neo4j-contrib/mcp-neo4j/tree/main/servers/mcp-neo4j-cypher) to obtain the schema to feed it into the first prompt. This should also work in [Spring AI](https://spring.io/projects/spring-ai) projects, considering that Embabel is built on top of Spring AI.
-On the whole, this saved me some token usage for a whole lot of code and a maintenance hassle. Though a very satisfying academic exercise!
+On the whole, this saved me some token usage and gave me a whole lot of code and a maintenance hassle. Though a very satisfying academic exercise!
 
 
 *All code for this article is at https://github.com/aldrinm/embabel-neo4j-cyver-mcp*
